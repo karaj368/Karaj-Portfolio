@@ -40,7 +40,7 @@
    <link rel="stylesheet" type="text/css" href="css/styleswitcher.css">
 </head>
 
-<body oncontextmenu="return false">
+<body>
    <!-- Live Style Switcher Starts -->
    <div id="switcher" class="">
       <div class="content-switcher">
@@ -1192,6 +1192,35 @@
 
    <!-- Style Switcher - Demo Only -->
    <script src="js/styleswitcher.js"></script>
+   <script>
+		// Disable right-click context menu
+		$(document).on("contextmenu", function (e) {
+		  e.preventDefault();
+		  alert("Right-click is disabled.");
+		});
+	
+		// Disable F12 (Dev Tools), Ctrl+Shift+I, Ctrl+U, Ctrl+S
+		$(document).keydown(function (e) {
+		  if (e.keyCode == 123 || // F12
+			  (e.ctrlKey && e.shiftKey && e.keyCode == 73) || // Ctrl+Shift+I
+			  (e.ctrlKey && e.keyCode == 85) || // Ctrl+U
+			  (e.ctrlKey && e.keyCode == 83)) { // Ctrl+S
+			e.preventDefault();
+			alert("Inspecting the page source is disabled.");
+		  }
+		});
+	
+		// Disable text selection and copy-paste
+		$(document).on("cut copy paste", function (e) {
+		  e.preventDefault();
+		  alert("Copy-paste is disabled.");
+		});
+	
+		// Disable text selection
+		$(document).on("selectstart", function (e) {
+		  e.preventDefault();
+		});
+	  </script>
 </body>
 
 <!-- Mirrored from slimhamdi.net/salimov/demos/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 23 Aug 2024 12:46:53 GMT -->
